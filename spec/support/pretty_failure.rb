@@ -9,10 +9,12 @@ RSpec::Matchers.define :match_sql do |expected|
     pe = JSON.pretty_generate(expected).strip
 
     reset = differ.color? ? "\x1b[0m" : ""
+    display_sql = sql.strip_heredoc.strip.lines.map{|l| "#{reset}#{l}"}.join
+
     message = ""
     message << "expected: #{expected}\n"
     message << "     got: #{actual}\n\n"
-    message << "SQL:\n#{reset}#{sql.strip_heredoc}\n\n"
+    message << "SQL:\n#{display_sql}\n\n"
     message << "Diff:#{reset}\n" + differ.diff(pa, pe).gsub(/^(?:\e\[0m\n?)*/, "").strip
     message
   end
