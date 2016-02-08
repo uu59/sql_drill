@@ -7,5 +7,6 @@ gem "pry"
 
 gem "bundler", :require => [
   "yaml",
+  "json",
 ]
 
