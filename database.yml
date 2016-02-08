@@ -1,0 +1,4 @@
+adapter: postgresql
+host: localhost
+user: postgres
+dbname: sql_drill
